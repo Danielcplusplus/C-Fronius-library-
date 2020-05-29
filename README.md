@@ -1,4 +1,4 @@
-# C-Fronius-library-
+# C-Fronius-library
 
 Warning this project is in the alpha-phase, we take no responsibility for any damage caused to your devices!
 
