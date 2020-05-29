@@ -1,5 +1,7 @@
 # C-Fronius-library-
-# Warning this project is in the alpha-phase, we take no responsibility for any damage caused to your devices.
+
+Warning this project is in the alpha-phase, we take no responsibility for any damage caused to your devices!
+
 This project, wich was created by me and mike-2x, aims to simplify the process of getting power-values from a Fronius-inverter in c, using the Fronius json api.
 
 
