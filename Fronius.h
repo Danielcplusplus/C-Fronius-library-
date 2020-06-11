@@ -61,7 +61,6 @@ char * parse(char * source, char * target)
 		}
 		if(y==0)
 		{
-			printf("\nValue: %s\n\n",value);
 			source[i+1]=0x00;
 		}
 	}
