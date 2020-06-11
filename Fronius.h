@@ -126,7 +126,7 @@ void get_request(char * url, char * dest)
     curl_easy_cleanup(curl);
 
   }
-}//version with request to plug13
+}
 
 double get_solar_power(char * ip[300]){
 	char search_term[16] = "PowerReal_P_Sum";//Change to what Value You want to Use
