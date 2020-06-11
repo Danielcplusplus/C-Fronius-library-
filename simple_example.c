@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "Fronius.h"
 double powersum = 0.0;
 int main()
