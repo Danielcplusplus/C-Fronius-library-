@@ -1,4 +1,3 @@
-//This file was created by Danielcplusplus and mike-2x
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,13 +5,13 @@
 char json[1100];
 
 
-double parse(char * source, char * target)
+char * parse(char * source, char * target)
 {
 	int i=0;
 	int x=0;
 	int y=0;
 	double value_return = 0;
-	char value[32];
+	char * value = malloc(128 * sizeof(char));
 
 	for(i=0;source[i]!=0x00;i++)
 	{
@@ -49,14 +48,8 @@ double parse(char * source, char * target)
 		}
 	}
 
-	sscanf(value, "%lf", &value_return);
-
-	return value_return;
+	return value;
 }
-
-
-
-
 
 struct string {
   char *ptr;
@@ -66,10 +59,7 @@ struct string {
 void init_string(struct string *s) {
   s->len = 0;
   s->ptr = malloc(s->len+1);
-  if (s->ptr == NULL) {
-    fprintf(stderr, "Memory error 1\n");
-    exit(EXIT_FAILURE);
-  }
+  if (s->ptr == NULL)exit(1);
   s->ptr[0] = '\0';
 }
 
@@ -77,10 +67,8 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, struct string *s)
 {
   size_t new_len = s->len + size*nmemb;
   s->ptr = realloc(s->ptr, new_len+1);
-  if (s->ptr == NULL) {
-    fprintf(stderr, "Memory error 2\n");
-    exit(EXIT_FAILURE);
-  }
+  if (s->ptr == NULL)exit(1);
+
   memcpy(s->ptr+s->len, ptr, size*nmemb);
   s->ptr[new_len] = '\0';
   s->len = new_len;
@@ -94,7 +82,8 @@ void get_request(char * url, char * dest)
   CURLcode res;
 
   curl = curl_easy_init();
-  if(curl) {
+  if(curl)
+  {
     struct string s;
     init_string(&s);
 
@@ -106,40 +95,39 @@ void get_request(char * url, char * dest)
     sprintf(dest,"%s\n", s.ptr);
     free(s.ptr);
 
-    /* always cleanup */
     curl_easy_cleanup(curl);
   }
 }
 
-  void get_request_without(char * url)
+void get_request_without(char * url)
 {
   CURL *curl;
   CURLcode res;
 
   curl = curl_easy_init();
-  if(curl) {
-    struct string s;
-
+  if(curl)
+  {
     curl_easy_setopt(curl, CURLOPT_URL, url);
     res = curl_easy_perform(curl);
 
     curl_easy_cleanup(curl);
-
   }
 }
 
-double get_solar_power(char * ip[300]){
-	char search_term[16] = "PowerReal_P_Sum";//Change to what Value You want to Use
+double get_solar_power(char * ip[300])
+{
+	char search_term[16] = "PowerReal_P_Sum";//Change to what value you want to use
 
 	memset(json, 0, 1100);
-	double powersum;
+	char * powersum;
+	double powersum_double;
 	char url[300] = "";
 	strcat(url,"http://");
 	strcat(url,ip);
 	strcat(url,"/solar_api/v1/GetMeterRealtimeData.cgi?Scope=System&DeviceID=1&DataCollection=CommonInverterData");
 	//printf("%s",url);
-	get_request(url,json);//Change Ip Adress to your IP
+	get_request(url,json);//Change IP address to your IP
 	powersum = parse(json,search_term);
-	return powersum;
+	sscanf(powersum, "%lf", &powersum_double);
+	return powersum_double;
 }
-
