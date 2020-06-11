@@ -132,6 +132,15 @@ void get_request_without(char * url)
   }
 }
 
+void get_ip_only(char * ip, char * dest)
+{
+	char url[300] = "";
+	strcat(url,"http://");
+	strcat(url,ip);
+	strcat(url,"/solar_api/v1/GetMeterRealtimeData.cgi?Scope=System&DeviceID=1&DataCollection=CommonInverterData");
+	get_request(url,dest);
+}
+
 double get_solar_power(char * ip[300])
 {
 	char search_term[16] = "PowerReal_P_Sum";//Change to what value you want to use
@@ -139,12 +148,7 @@ double get_solar_power(char * ip[300])
 	memset(json, 0, 1100);
 	char * powersum;
 	double powersum_double;
-	char url[300] = "";
-	strcat(url,"http://");
-	strcat(url,ip);
-	strcat(url,"/solar_api/v1/GetMeterRealtimeData.cgi?Scope=System&DeviceID=1&DataCollection=CommonInverterData");
-	//printf("%s",url);
-	get_request(url,json);//Change IP address to your IP
+	get_ip_only(ip, json);
 	powersum = parse(json,search_term);
 	sscanf(powersum, "%lf", &powersum_double);
 	return powersum_double;
