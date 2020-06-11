@@ -1,4 +1,3 @@
-#include "math.h"
 #include "Fronius.h"
 double powersum = 0.0;
 int main()
