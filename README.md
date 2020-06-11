@@ -6,7 +6,7 @@ DISCLAIMER: This project is not affiliated with, funded by, or in any way associ
 
 WARNING: This project is still in the alpha phase and should NOT be relied upon! Also, please keep in mind that we take no responsibility whatsoever for any damage caused to your devices!
 
-This project, wich was created by me and mike-2x, aims to simplify the process of getting power values from a Fronius inverter in C, using the Fronius JSON API.
+This project, wich was created by me and mike-2x, aims to simplify the process of getting power values from a Fronius inverter in C, using the Fronius JSON API. (and, with minor tweaks, it could work with other inverters as well)
 
 
 # Usage
