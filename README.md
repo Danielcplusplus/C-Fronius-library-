@@ -1,6 +1,7 @@
 # C-Fronius-library
 
 Copyright (c) 2020 Danielcplusplus and mike-2x.
+
 DISCLAIMER: This project is not affiliated with, funded by, or in any way associated with Fronius International GmbH.
 
 WARNING: This project is still in the alpha phase and should NOT be relied upon! Also, please keep in mind that we take no responsibility whatsoever for any damage caused to your devices!
