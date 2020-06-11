@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "Fronius.h"
 char json[1100];
 int main()
