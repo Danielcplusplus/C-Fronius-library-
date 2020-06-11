@@ -1,7 +1,7 @@
 # C-Fronius-library
 
 Copyright (c) 2020 Danielcplusplus and mike-2x.
-Licenced under the terms of the GNU General Public License version 3.
+Licensed under the terms of the GNU General Public License version 3.
 
 DISCLAIMER: This project is not affiliated with, funded by, or in any way associated with Fronius International GmbH.
 
